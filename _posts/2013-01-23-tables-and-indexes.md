@@ -3,7 +3,6 @@ layout: post
 title: Tables and Indexes
 ---
 
-# Tables and Indexes #
 
 ## Table properties ##
 

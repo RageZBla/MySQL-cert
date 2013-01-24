@@ -3,7 +3,6 @@ layout: post
 title: Querying for data
 ---
 
-# Querying for (more) data #
 
 Full syntax
 
