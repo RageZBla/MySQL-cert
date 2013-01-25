@@ -6,8 +6,8 @@ title: Querying for data
 
 Full syntax
 
-<code>
-SELECT
+
+    SELECT
     [ALL | DISTINCT | DISTINCTROW ]
       [HIGH_PRIORITY]
       [STRAIGHT_JOIN]
@@ -29,7 +29,7 @@ SELECT
       | INTO DUMPFILE 'file_name'
       | INTO var_name [, var_name]]
     [FOR UPDATE | LOCK IN SHARE MODE]]
-</code>
+
 *Ouch*
 
 Little bit less verbose one
@@ -68,34 +68,35 @@ SELECT * FROM INFORMATION_SCHEMA.TABLES;
 ## Where are my keys ##
 
 priority 
-<code>
-	age < 20 AND country = 'France' OR country = 'USA'
-<code>
+
+<code>age < 20 AND country = 'France' OR country = 'USA'</code>
 
 equivalent to
-<code>
-	(age < 20 AND country = 'France') or country = 'USA'
-</code>
+
+<code>(age < 20 AND country = 'France') or country = 'USA'</code>
+
 *AND have higher priority over OR*
 
 _--safe-updates_ will prevent SELECT to retrieve more than 1000 rows(if LIMIT not specified) and not execute a query with join if more than 1 million rows must be processesed 
 .
 
 ## Sorting ##
-<code>
+
+
 	SELECT first_name FROM Registrant ORDER BY first_name DESC;
 	SELECT foo,bar FROM foobar ORDER BY 1, 2; -- not advised.. 
 	SELECT country, COUNT(*) FROM Registrant GROUP BY country ORDER BY COUNT(*); 
-</code>
+
 
 If an index is applied to the order by column, it might be faster.
 ORDER BY can be used with UPDATE or DELETE
 
 Ordering is sensible to collation for non binary strings
 forcing collation
-<code>
-	SELECT c FROM foobar ORDER BY c COLLATE latin1_general_cs
-</code>
+
+
+    SELECT c FROM foobar ORDER BY c COLLATE latin1_general_cs
+
 
 Enum sort by virtual number
 
