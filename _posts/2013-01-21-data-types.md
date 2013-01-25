@@ -321,6 +321,13 @@ MyISAM allow composite indexes that includ AUTO_INCREMENT
 
 # Handling missing values #
 
+MySQL missing values with such process: 
+
+ - if DEFAULT is present use default
+ - if no default: 
+    - no strict mode, insert implicit default value
+    - strict mode, transaction table -> error, if transactional and multi insert/update -> warning (2 or later rows) (*avoid partial updates*)
+
 	SHOW WARNINGS
 
 Conversion of out of range, for example TINYINT = 128 -> 127
@@ -330,6 +337,11 @@ String truncation
 data type default, '0000-00-00'
 
 assigning NULL to NOT NULL, 1 statement -> error, multiple insert default type value + warning
+
+In strict mode, transaction get cancelled, on non transaction table, if first row error, if second or more default value and warning
+
+STRICT_ALL_TABLES cancel no matter what, kind of dangerous for non transactional
+
 
 # more checking #
 
