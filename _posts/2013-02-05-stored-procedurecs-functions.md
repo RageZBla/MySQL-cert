@@ -316,3 +316,5 @@ to grant GRANT option you have to explicitly write it
 	GRANT ALL ON foo.* to 'bar'@'localhost' WITH GRANT OPTION;
 
 	GRANT EXECUTE, ALTER ROUTINE ON PROCEDURE foo.foo TO 'bar'@'localhost';
+
+	
